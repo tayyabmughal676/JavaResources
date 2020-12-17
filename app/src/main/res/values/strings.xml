@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">JavaResources</string>
+
+    <string-array name="myColors">
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Sky Blue</item>
+        <item>White</item>
+    </string-array>
+
+
+    <string-array name="planets">
+        <item>Earth </item>
+        <item>Venus </item>
+        <item>Mars </item>
+        <item>Pluto </item>
+    </string-array>
+</resources>
