@@ -11,21 +11,60 @@
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="108dp"
+        android:dropDownWidth="wrap_content"
+        android:entries="@array/planets"
+        android:scrollbarSize="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
+    <Button
+        android:id="@+id/getTimeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="72dp"
+        android:text="Get Time"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <TextView
+        android:id="@+id/timeNowTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Time Now"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/getTimeBtn"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="@+id/getTimeBtn"
+        app:layout_constraintTop_toBottomOf="@+id/getTimeBtn" />
+
+    <Button
+        android:id="@+id/getDateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Get Date"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeNowTV" />
+
+    <TextView
+        android:id="@+id/dateNowTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Date Now"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/getDateBtn"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="@+id/getDateBtn"
+        app:layout_constraintTop_toBottomOf="@+id/getDateBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
