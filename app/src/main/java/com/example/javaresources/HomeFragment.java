@@ -1,26 +1,22 @@
 package com.example.javaresources;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-
 import android.app.DatePickerDialog;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.TimePickerDialog;
-import android.os.Build;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
-import java.sql.Time;
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeFragment extends Fragment {
 
     private TextView mTimeNow;
     private TextView mDateNow;
@@ -28,16 +24,23 @@ public class MainActivity extends AppCompatActivity {
     private Button mDateBtn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        Spinner mSpinner = (Spinner) findViewById(R.id.spinner);
-        mTimeBtn = findViewById(R.id.getTimeBtn);
-        mDateBtn = findViewById(R.id.getDateBtn);
+    }
 
-        mTimeNow = findViewById(R.id.timeNowTV);
-        mDateNow = findViewById(R.id.dateNowTV);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        Spinner mSpinner = (Spinner) view.findViewById(R.id.spinner);
+        mTimeBtn = view.findViewById(R.id.getTimeBtn);
+        mDateBtn = view.findViewById(R.id.getDateBtn);
+
+        mTimeNow = view.findViewById(R.id.timeNowTV);
+        mDateNow = view.findViewById(R.id.dateNowTV);
 
         mTimeBtn.setOnClickListener(v -> {
             withTime();
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         String myCol[] = this.getResources().getStringArray(R.array.myColors);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,
+                requireContext(),
                 R.array.planets,
                 android.R.layout.simple_spinner_item
         );
@@ -57,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item
         );
         mSpinner.setAdapter(adapter);
+
+        return view;
     }
 
     private void withDate() {
@@ -66,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         int MONTH = calendar.get(Calendar.MONTH);
         int DATE = calendar.get(Calendar.DATE);
 //      Date Picker Dialog
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), (view, year, month, dayOfMonth) -> {
             String dateString = year + " " + month + "" + dayOfMonth;
             mDateNow.setText(dateString);
         }, YEAR, MONTH, DATE);
@@ -80,11 +85,12 @@ public class MainActivity extends AppCompatActivity {
         int HOUR = calendar.get(Calendar.HOUR);
         int MINTUE = calendar.get(Calendar.MINUTE);
 //      Time Picker Dialog
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this, (view, hourOfDay, minute) -> {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(requireContext(), (view, hourOfDay, minute) -> {
             String timeString = "Hour-> " + hourOfDay + " Mintue-> " + minute;
             mTimeNow.setText(timeString);
         }, HOUR, MINTUE, true);
 
         timePickerDialog.show();
     }
+
 }
